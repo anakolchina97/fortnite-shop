@@ -1,15 +1,15 @@
 export const GoodsItem = (props) => {
   const {
-    addToBasket,
     mainId, 
     displayName, 
     displayDescription, 
     price: {finalPrice}, 
-    displayAssets: [{full_background}]
+    displayAssets: [{full_background}],
+    addToBasket = Function.prototype,
   } = props;
 
   return (
-    <div className="card" id={mainId}>
+    <div className="card">
       <div className="card-image">
         <img src={full_background} alt={displayName} />
       </div>

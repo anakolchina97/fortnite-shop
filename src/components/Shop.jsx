@@ -8,7 +8,9 @@ import { Cart } from './Cart';
 export const Shop = () => {
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [order, setOrder] = useState([])
+  const [order, setOrder] = useState([]);
+
+  console.log(order)
 
   useEffect(function getGoods() {
     fetch(API_URL, {
@@ -24,8 +26,27 @@ export const Shop = () => {
   }, []);
 
   const addToBasket = (item) => {
-    if (!(order.find((o) => o.mainId === item.mainId))) {
-      return setOrder([...order, item]);
+    const itemIndex = order.findIndex((orderItem) => orderItem.mainId === item.mainId);
+
+    if (itemIndex < 0) {
+      const newItem = {
+        ...item,
+        quantity: 1,
+      }
+      setOrder([...order, newItem]);
+    } else {
+      const newOrder = order.map((orderItem, index) => {
+        if (index === itemIndex) {
+          return {
+            ...orderItem,
+            quantity: orderItem.quantity + 1
+          }
+        } else {
+          return orderItem;
+        }
+      })
+
+      setOrder(newOrder);
     }
   };
 
