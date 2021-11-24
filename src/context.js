@@ -30,6 +30,18 @@ export const ContextProvider = ({children}) => {
     dispatch({type: 'TOGGLE_BASKET'})
   }
 
+  value.setGoods = (data) => {
+    dispatch({type: 'SET_GOODS', payload: data})
+  }
+
+  value.incQuantity = (itemId) => {
+    dispatch({ type: 'INCREMENT_QUANTITY', payload: { mainId: itemId } });
+  };
+
+  value.decQuantity = (itemId) => {
+    dispatch({ type: 'DECREMENT_QUANTITY', payload: { mainId: itemId } });
+  };
+
   return <ShopContext.Provider value={value}>
   { children }
   </ShopContext.Provider>

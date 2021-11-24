@@ -1,8 +1,17 @@
 export const reducer = (state, { type, payload }) => {
+  console.log('state', state)
+  console.log('type', type)
+  console.log('payload', payload)
   switch (type) {
+    case "SET_GOODS":
+      return {
+        ...state,
+        goods: payload || [],
+        loading: false
+      }
     case "ADD_TO_BASKET": {
       const itemIndex = state.order.findIndex(
-        (orderItem) => orderItem.id === payload.id
+        (orderItem) => orderItem.mainId === payload.mainId
       );
 
       let newOrder = null;
@@ -28,19 +37,19 @@ export const reducer = (state, { type, payload }) => {
       return {
         ...state,
         order: newOrder,
-        alertName: payload.name,
+        alertName: payload.displayName,
       };
     }
     case "REMOVE_FROM_BASKET":
       return {
         ...state,
-        order: state.order.filter((el) => el.id !== payload.id),
+        order: state.order.filter((el) => el.mainId !== payload.id),
       };
     case "INCREMENT_QUANTITY":
       return {
         ...state,
         order: state.order.map((el) => {
-          if (el.id === payload.id) {
+          if (el.mainId === payload.mainId) {
             const newQuantity = el.quantity + 1;
             return {
               ...el,
@@ -55,7 +64,7 @@ export const reducer = (state, { type, payload }) => {
       return {
         ...state,
         order: state.order.map((el) => {
-          if (el.id === payload.id) {
+          if (el.mainId === payload.mainId) {
             const newQuantity = el.quantity - 1;
             return {
               ...el,
