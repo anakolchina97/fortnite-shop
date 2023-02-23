@@ -1,8 +1,8 @@
 export const BasketItem = (props) => {
   const {
-    mainId, 
+    mainId,
     displayName,
-    finalPrice, 
+    finalPrice,
     quantity,
     removeFromBasket = Function.prototype,
     incQuantity = Function.prototype,
@@ -25,9 +25,12 @@ export const BasketItem = (props) => {
         add
       </i>{" "}
       = {finalPrice * quantity} руб.
-      <span className="secondary-content" onClick={() => removeFromBasket(mainId)}>
+      <span
+        className="secondary-content"
+        onClick={() => removeFromBasket(mainId)}
+      >
         <i className="material-icons basket-delete">close</i>
       </span>
     </li>
   );
-}
+};

@@ -1,20 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 export const Alert = (props) => {
-  const { name = '', closeAlert = Function.prototype } = props;
+  const { name = "", closeAlert = Function.prototype } = props;
 
   useEffect(() => {
-      const timerId = setTimeout(closeAlert, 3000);
+    const timerId = setTimeout(closeAlert, 3000);
 
-      return () => {
-          clearTimeout(timerId);
-      };
-      // eslint-disable-next-line
+    return () => {
+      clearTimeout(timerId);
+    };
+    // eslint-disable-next-line
   }, [name]);
 
   return (
-      <div id='toast-container'>
-          <div className='toast'>{name} добавлен в корзину</div>
-      </div>
+    <div id="toast-container">
+      <div className="toast">{name} добавлен в корзину</div>
+    </div>
   );
-}
+};

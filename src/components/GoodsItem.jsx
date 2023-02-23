@@ -1,10 +1,10 @@
 export const GoodsItem = (props) => {
   const {
-    mainId, 
-    displayName, 
-    displayDescription, 
-    price: {finalPrice}, 
-    displayAssets: [{full_background}],
+    mainId,
+    displayName,
+    displayDescription,
+    price: { finalPrice },
+    displayAssets: [{ full_background }],
     addToBasket = Function.prototype,
   } = props;
 
@@ -14,17 +14,24 @@ export const GoodsItem = (props) => {
         <img src={full_background} alt={displayName} />
       </div>
       <div className="card-content">
-        <div className="card-title"><b>{displayName}</b></div> 
-        <p>
-          {displayDescription}
-        </p>
+        <div className="card-title">
+          <b>{displayName}</b>
+        </div>
+        <p>{displayDescription}</p>
       </div>
       <div className="card-action">
-        <button className="btn" onClick={() => addToBasket({
-          mainId,
-          displayName,
-          finalPrice,
-        })}>Buy</button>
+        <button
+          className="btn"
+          onClick={() =>
+            addToBasket({
+              mainId,
+              displayName,
+              finalPrice,
+            })
+          }
+        >
+          Buy
+        </button>
         <span className="price">{finalPrice}</span>
       </div>
     </div>
