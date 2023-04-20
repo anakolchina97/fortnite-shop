@@ -4,7 +4,7 @@ export const Footer = () => {
       <footer className="page-footer green lighten-4">
         <div className="footer-copyright">
           <div className="container">
-            © {new Date().getFullYear()} Copyright Text
+            &copy; {new Date().getFullYear()} Copyright Text
             <a
               className="grey-text text-lighten-4 right"
               href="https://github.com/lindenbergannie/react-shop"
